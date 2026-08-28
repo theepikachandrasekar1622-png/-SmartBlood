@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartBlood | Smart Blood Donor Finder</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================================================
+         SCREEN 1 : WELCOME / REGISTER
+    =================================================== -->
+
+    <div id="welcomeScreen" class="screen active">
+
+        <div class="welcome-card">
+
+            <div class="blood-logo">
+                🩸
+            </div>
+
+            <h1>Smart<span>Blood</span></h1>
+
+            <p class="tagline">
+                Smart Blood Donor & Emergency Finder
+            </p>
+
+            <div class="welcome-message">
+                <h2>Welcome to SmartBlood</h2>
+
+                <p>
+                    Connect people who need blood with
+                    potential donors faster and smarter.
+                </p>
+            </div>
+
+            <button class="primary-btn" onclick="openRegistration()">
+                REGISTER & CONTINUE →
+            </button>
+
+            <p class="prototype">
+                Hackathon Prototype
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         SCREEN 2 : REGISTRATION DETAILS
+    =================================================== -->
+
+    <div id="registrationScreen" class="screen">
+
+        <div class="form-container">
+
+            <div class="top-title">
+                <div class="mini-logo">🩸 SmartBlood</div>
+
+                <h1>Create Your Profile</h1>
+
+                <p>
+                    First, enter your basic personal information.
+                </p>
+            </div>
+
+
+            <form id="registrationForm">
+
+                <!-- PERSONAL DETAILS -->
+
+                <div class="form-card">
+
+                    <h2>👤 Personal Details</h2>
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+
+                            <label>Full Name *</label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Age *</label>
+
+                            <input
+                                type="number"
+                                id="age"
+                                min="1"
+                                max="120"
+                                placeholder="Enter age"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Gender *</label>
+
+                            <select id="gender" required>
+
+                                <option value="">
+                                    Select Gender
+                                </option>
+
+                                <option value="Female">
+                                    Female
+                                </option>
+
+                                <option value="Male">
+                                    Male
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                                <option value="Prefer not to say">
+                                    Prefer not to say
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Height (cm) *</label>
+
+                            <input
+                                type="number"
+                                id="height"
+                                placeholder="Example: 165"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Weight (kg) *</label>
+
+                            <input
+                                type="number"
+                                id="weight"
+                                placeholder="Example: 55"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT DETAILS -->
+
+                <div class="form-card">
+
+                    <h2>📞 Contact Details</h2>
+
+                    <p class="hint">
+                        Enter at least one contact method.
+                    </p>
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+
+                            <label>Phone Number</label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="Enter phone number"
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Email ID</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Enter email address"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BLOOD DETAILS -->
+
+                <div class="form-card">
+
+                    <h2>🩸 Blood & Location Details</h2>
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+
+                            <label>Blood Group *</label>
+
+                            <select id="bloodGroup" required>
+
+                                <option value="">
+                                    Select Blood Group
+                                </option>
+
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>District *</label>
+
+                            <select id="district" required>
+
+                                <option value="">
+                                    Select District
+                                </option>
+
+                                <option>Dindigul</option>
+                                <option>Madurai</option>
+                                <option>Theni</option>
+                                <option>Virudhunagar</option>
+                                <option>Coimbatore</option>
+                                <option>Chennai</option>
+                                <option>Tiruchirappalli</option>
+                                <option>Other</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group full">
+
+                        <label>Address *</label>
+
+                        <textarea
+                            id="address"
+                            rows="4"
+                            placeholder="Enter your address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HEALTH INFORMATION -->
+
+                <div class="form-card">
+
+                    <h2>🏥 Health Information</h2>
+
+                    <p class="hint">
+                        Optional information for this hackathon prototype.
+                    </p>
+
+                    <div class="input-group full">
+
+                        <label>Any Health Issues?</label>
+
+                        <textarea
+                            id="healthIssues"
+                            rows="3"
+                            placeholder="Type 'None' if there are no relevant issues"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONSENT -->
+
+                <div class="consent">
+
+                    <input
+                        type="checkbox"
+                        id="confirm"
+                        required
+                    >
+
+                    <label for="confirm">
+
+                        I confirm that the information entered
+                        is correct and I agree to continue.
+
+                    </label>
+
+                </div>
+
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        onclick="showWelcome()"
+                    >
+                        ← BACK
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        SAVE & CHOOSE ROLE →
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         SCREEN 3 : ROLE SELECTION
+    =================================================== -->
+
+    <div id="roleScreen" class="screen">
+
+        <div class="role-container">
+
+            <div class="top-title">
+
+                <div class="mini-logo">
+                    🩸 SmartBlood
+                </div>
+
+                <h1>Choose Your Role</h1>
+
+                <p>
+                    How do you want to use SmartBlood?
+                </p>
+
+            </div>
+
+
+            <div class="role-cards">
+
+                <!-- DONOR -->
+
+                <div class="role-card donor-role">
+
+                    <div class="role-icon">
+                        🩸
+                    </div>
+
+                    <h2>DONOR</h2>
+
+                    <p>
+                        I want to donate blood and help
+                        people who need it.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="openDonor()"
+                    >
+                        BECOME A DONOR →
+                    </button>
+
+                </div>
+
+
+                <!-- PATIENT -->
+
+                <div class="role-card patient-role">
+
+                    <div class="role-icon">
+                        🚨
+                    </div>
+
+                    <h2>PATIENT</h2>
+
+                    <p>
+                        I need blood for myself or someone
+                        who needs blood.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="openPatient()"
+                    >
+                        REQUEST BLOOD →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="secondary-btn"
+                onclick="openRegistration()"
+            >
+                ← EDIT REGISTRATION
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         SCREEN 4 : DONOR DETAILS
+    =================================================== -->
+
+    <div id="donorScreen" class="screen">
+
+        <div class="form-container">
+
+            <div class="top-title">
+
+                <div class="mini-logo">
+                    🩸 SmartBlood
+                </div>
+
+                <h1>Donor Details</h1>
+
+                <p>
+                    Complete your donor information.
+                </p>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <h2>🩸 Donation Information</h2>
+
+                <div class="input-grid">
+
+                    <div class="input-group">
+
+                        <label>Blood Group</label>
+
+                        <input
+                            type="text"
+                            id="donorBlood"
+                            readonly
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>District</label>
+
+                        <input
+                            type="text"
+                            id="donorDistrict"
+                            readonly
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Donor Availability *</label>
+
+                        <select id="availability">
+
+                            <option value="Available">
+                                Available
+                            </option>
+
+                            <option value="Not Available">
+                                Not Available
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Preferred Contact</label>
+
+                        <select id="contactPreference">
+
+                            <option value="Phone">
+                                Phone
+                            </option>
+
+                            <option value="Email">
+                                Email
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <h3>💡 Donor Note</h3>
+
+                <p>
+                    Please ensure that you are medically
+                    eligible to donate before donating.
+                    Final eligibility should always be
+                    confirmed by a qualified medical
+                    professional or blood bank.
+                </p>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="openRoleSelection()"
+                >
+                    ← BACK
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="saveDonor()"
+                >
+                    REGISTER AS DONOR ✓
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         SCREEN 5 : PATIENT DETAILS
+    =================================================== -->
+
+    <div id="patientScreen" class="screen">
+
+        <div class="form-container">
+
+            <div class="top-title">
+
+                <div class="mini-logo">
+                    🩸 SmartBlood
+                </div>
+
+                <h1>Patient Blood Request</h1>
+
+                <p>
+                    Enter the blood requirement details.
+                </p>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <h2>🚨 Patient Details</h2>
+
+                <div class="input-grid">
+
+                    <div class="input-group">
+
+                        <label>Patient Name *</label>
+
+                        <input
+                            type="text"
+                            id="patientName"
+                            placeholder="Enter patient name"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Required Blood Group *</label>
+
+                        <select id="requiredBlood">
+
+                            <option value="">
+                                Select Blood Group
+                            </option>
+
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Units Required *</label>
+
+                        <input
+                            type="number"
+                            id="units"
+                            min="1"
+                            placeholder="Example: 2"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Hospital Name *</label>
+
+                        <input
+                            type="text"
+                            id="hospital"
+                            placeholder="Enter hospital name"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>District *</label>
+
+                        <select id="patientDistrict">
+
+                            <option value="">
+                                Select District
+                            </option>
+
+                            <option>Dindigul</option>
+                            <option>Madurai</option>
+                            <option>Theni</option>
+                            <option>Virudhunagar</option>
+                            <option>Coimbatore</option>
+                            <option>Chennai</option>
+                            <option>Tiruchirappalli</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Emergency Level *</label>
+
+                        <select id="emergency">
+
+                            <option value="">
+                                Select Level
+                            </option>
+
+                            <option>Normal</option>
+                            <option>Urgent</option>
+                            <option>Critical</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group full">
+
+                        <label>Contact Number *</label>
+
+                        <input
+                            type="tel"
+                            id="patientContact"
+                            placeholder="Enter contact number"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="openRoleSelection()"
+                >
+                    ← BACK
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="findMatches()"
+                >
+                    🔎 FIND POTENTIAL DONORS
+                </button>
+
+            </div>
+
+
+            <!-- MATCHING RESULTS -->
+
+            <div
+                id="matchingResults"
+                class="results-card"
+            >
+
+                <h2>
+                    🤖 Smart Matching Results
+                </h2>
+
+                <p class="hint">
+                    Potential matches based on blood group,
+                    availability and district.
+                </p>
+
+                <div id="donorResults"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         SCREEN 6 : DASHBOARD
+    =================================================== -->
+
+    <div id="dashboardScreen" class="screen">
+
+        <header class="navbar">
+
+            <div class="brand">
+                🩸 Smart<span>Blood</span>
+            </div>
+
+            <button
+                class="logout-btn"
+                onclick="logout()"
+            >
+                LOGOUT
+            </button>
+
+        </header>
+
+
+        <section class="dashboard">
+
+            <div class="dashboard-welcome">
+
+                <p>Welcome back</p>
+
+                <h1 id="dashboardName">
+                    User
+                </h1>
+
+                <span id="dashboardRole">
+                    SmartBlood User
+                </span>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        My Profile
+                    </h3>
+
+                    <p>
+                        View your registered details.
+                    </p>
+
+                    <button
+                        class="outline-btn"
+                        onclick="showProfile()"
+                    >
+                        VIEW PROFILE
+                    </button>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-icon">
+                        🩸
+                    </div>
+
+                    <h3>
+                        Blood Group
+                    </h3>
+
+                    <strong id="dashboardBlood">
+                        --
+                    </strong>
+
+                    <p>
+                        Registered blood group
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-icon">
+                        📍
+                    </div>
+
+                    <h3>
+                        District
+                    </h3>
+
+                    <strong id="dashboardDistrict">
+                        --
+                    </strong>
+
+                    <p>
+                        Registered location
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-icon">
+                        🚨
+                    </div>
+
+                    <h3>
+                        Blood Request
+                    </h3>
+
+                    <p>
+                        Need blood? Create a request.
+                    </p>
+
+                    <button
+                        class="outline-btn"
+                        onclick="openPatient()"
+                    >
+                        REQUEST BLOOD
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROFILE -->
+
+            <div
+                id="profileBox"
+                class="profile-box"
+            >
+
+                <h2>
+                    👤 My Profile
+                </h2>
+
+                <div id="profileContent"></div>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
